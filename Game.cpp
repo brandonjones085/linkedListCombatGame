@@ -35,31 +35,36 @@ void Game::runGame()
 	std::cout << "\nPlease enter the number of players for team one ";
 	std::cin >> teamOne;
 	validateInt(teamOne); 
+	setNumTeamOne(teamOne); 
 
 	int teamTwo;
 	std::cout << "\nPlease enter the number of players for team two ";
 	std::cin >> teamTwo;
 	validateInt(teamTwo); 
-	
+	setNumTeamTwo(teamTwo); 
+
+	game = true; 
 
 
-	
+	while (game)
+	{
+		//Pauses game between rounds
+		std::cin.clear();
+		std::cin.sync(); 
+		std::cin.ignore(); 
+
+
+		int round = 0; 
+		std::cout << "\nThe tournament has begun\n"; 
 
 
 
 
-		
-
-		
-
+		std::cout << "\n\nRound number: " << round << std::endl; 
+		round++; 
 
 
-
-
-	
-
-
-
+	}
 
 
 }
@@ -79,6 +84,16 @@ void Game::setOpponent(Character *o)
 	this->opponent = o;
 }
 
+
+void Game::setNumTeamOne(int i)
+{
+	this->numTeamOne = i; 
+}
+
+void Game::setNumTeamTwo(int i)
+{
+	this->numTeamTwo = i; 
+}
 
 
 Game::~Game()

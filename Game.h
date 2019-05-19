@@ -15,6 +15,8 @@ class Game
 private:
 	Character *attacker;
 	Character *opponent;
+	int numTeamOne; 
+	int numTeamTwo; 
 	bool game = true;
 
 public:
@@ -23,6 +25,8 @@ public:
 	void runGame();
 	void setAttacker(Character*);
 	void setOpponent(Character*);
+	void setNumTeamOne(int); 
+	void setNumTeamTwo(int); 
 
 	~Game();
 };
