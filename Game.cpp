@@ -7,11 +7,11 @@
 
 #include "Game.h"
 #include "menu.h"
-//#include "Barbarian.h"
-//#include "Vampire.h"
-//#include "blueMen.h"
-//#include "Medusa.h"
-//#include "HarryPotter.h"
+#include "Barbarian.h"
+#include "Vampire.h"
+#include "blueMen.h"
+#include "Medusa.h"
+#include "HarryPotter.h"
 #include "validateInt.h"
 #include <iostream>
 #include <cstdlib>
@@ -44,7 +44,13 @@ void Game::runGame()
 	setNumTeamTwo(teamTwo); 
 
 	game = true; 
+	int round = 0;
 
+
+	for(int i = 0; i < teamOne; i++)
+	{
+		
+	}
 
 	while (game)
 	{
@@ -54,7 +60,7 @@ void Game::runGame()
 		std::cin.ignore(); 
 
 
-		int round = 0; 
+		
 		std::cout << "\nThe tournament has begun\n"; 
 
 

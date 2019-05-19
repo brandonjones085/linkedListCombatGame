@@ -10,7 +10,7 @@
 
 void validateMenu(int &i)
 {
-	while (!std::cin || (i < 1 || i > 2))
+	while (!std::cin || (i < 1 || i > 4))
 	{
 		std::cin.clear();
 		std::cin.sync();
