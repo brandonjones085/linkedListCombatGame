@@ -1,4 +1,18 @@
-﻿  Game.cpp
+﻿  Barbarian.cpp
+c:\users\brand\desktop\files\osu\cs162\linkedlistcombatgame\main\main\barbarian.cpp(17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\brand\desktop\files\osu\cs162\linkedlistcombatgame\main\main\barbarian.cpp(24): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  BlueMen.cpp
+c:\users\brand\desktop\files\osu\cs162\linkedlistcombatgame\main\main\bluemen.cpp(17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Character.cpp
+  Game.cpp
+  HarryPotter.cpp
+c:\users\brand\desktop\files\osu\cs162\linkedlistcombatgame\main\main\harrypotter.cpp(16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Medusa.cpp
+c:\users\brand\desktop\files\osu\cs162\linkedlistcombatgame\main\main\medusa.cpp(17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Queue.cpp
+  Vampire.cpp
+c:\users\brand\desktop\files\osu\cs162\linkedlistcombatgame\main\main\vampire.cpp(16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   main.cpp
+  playerMenu.cpp
   Generating Code...
   main.vcxproj -> C:\Users\brand\Desktop\files\OSU\cs162\linkedListCombatGame\main\Debug\main.exe

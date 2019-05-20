@@ -8,13 +8,14 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "Character.h"
+#include "Queue.h"
 
 class Game
 {
 private:
-	Character *attacker;
-	Character *opponent;
+	Queue *teamOne;
+	Queue *teamTwo;
+ 
 	int numTeamOne; 
 	int numTeamTwo; 
 	bool game = true;
@@ -23,8 +24,7 @@ public:
 	Game();
 
 	void runGame();
-	void setAttacker(Character*);
-	void setOpponent(Character*);
+	
 	void setNumTeamOne(int); 
 	void setNumTeamTwo(int); 
 

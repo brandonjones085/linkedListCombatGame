@@ -13,6 +13,8 @@
 #include "Medusa.h"
 #include "HarryPotter.h"
 #include "validateInt.h"
+#include "Queue.h"
+
 #include <iostream>
 #include <cstdlib>
 
@@ -31,23 +33,24 @@ Game::Game()
 
 void Game::runGame()
 {
-	int teamOne;
+	int teamOneNumPlayers;
 	std::cout << "\nPlease enter the number of players for team one ";
-	std::cin >> teamOne;
-	validateInt(teamOne); 
-	setNumTeamOne(teamOne); 
+	std::cin >> teamOneNumPlayers;
+	validateInt(teamOneNumPlayers); 
+	setNumTeamOne(teamOneNumPlayers); 
 
-	int teamTwo;
+	int teamTwoNumPlayers;
 	std::cout << "\nPlease enter the number of players for team two ";
-	std::cin >> teamTwo;
-	validateInt(teamTwo); 
-	setNumTeamTwo(teamTwo); 
+	std::cin >> teamTwoNumPlayers;
+	validateInt(teamTwoNumPlayers); 
+	setNumTeamTwo(teamTwoNumPlayers); 
 
 	game = true; 
 	int round = 0;
 
 
-	for(int i = 0; i < teamOne; i++)
+
+	for(int i = 0; i < teamOneNumPlayers; i++)
 	{
 		
 	}
@@ -79,16 +82,7 @@ void Game::runGame()
 
 
 
-void Game::setAttacker(Character *a)
-{
-	attacker = a;
-}
 
-
-void Game::setOpponent(Character *o)
-{
-	this->opponent = o;
-}
 
 
 void Game::setNumTeamOne(int i)

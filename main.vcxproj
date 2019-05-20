@@ -159,6 +159,9 @@
     <ClInclude Include="Medusa.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="playerMenu.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="validateInt.h" />
     <ClInclude Include="validateMenu.h" />
     <ClInclude Include="Vampire.h" />
@@ -178,6 +181,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="playerMenu.cpp" />
+    <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="validateInt.cpp" />
     <ClCompile Include="validateMenu.cpp" />
     <ClCompile Include="Vampire.cpp" />

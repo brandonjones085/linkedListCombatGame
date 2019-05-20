@@ -58,6 +58,19 @@ void Character::setTotalDefense(int t)
 	this->totalDefense = t;
 }
 
+
+void Character::setName(std::string n)
+{
+	this->name = n; 
+}
+
+
+std::string Character::getName()
+{
+	return name; 
+}
+
+
 int Character::getTotalAttack()
 {
 	return totalAttack;

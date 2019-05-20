@@ -4,8 +4,11 @@
 ** Description:  The header file for the Character class.
 *******************************************************************************/
 
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
-#pragma once
+#include <string>
+
 class Character
 {
 
@@ -17,12 +20,16 @@ protected:
 	int totalAttack;
 	int totalDefense;
 	int damageTotal;
+	std::string name; 
 
 
 public:
 	Character();
 	Character(int, int);
 	int getArmor();
+	void setName(std::string);
+	std::string getName(); 
+
 
 	virtual int getDefensePoints();
 	virtual int getStregthPoints();
@@ -40,3 +47,5 @@ public:
 
 	~Character();
 };
+
+#endif

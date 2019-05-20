@@ -7,7 +7,6 @@
 
 #include "Character.h"
 
-#pragma once
 
 #ifndef MEDUSA_HPP
 #define MEDUSA_HPP
@@ -20,7 +19,7 @@ public:
 	virtual void makeDefense(int);
 
 	virtual int getTotalAttack();
-	//virtual void specialAbility();
+	
 	~Medusa();
 };
 
