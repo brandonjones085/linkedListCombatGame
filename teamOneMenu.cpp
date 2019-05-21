@@ -1,12 +1,14 @@
-#include "teamOneMenu.h"
 
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         05/20/2019
+** Description:  The teamOneMenu function returns an int which is used to determine the users input
+*******************************************************************************/
 
 #include "teamOneMenu.h"
 #include "validateMenu.h"
 
 #include <iostream>
-
-
 
 
 int teamOneMenu()
