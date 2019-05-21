@@ -14,6 +14,7 @@
 #include "HarryPotter.h"
 #include "validateInt.h"
 #include "Queue.h"
+#include "teamOneMenu.h"
 
 #include <iostream>
 #include <cstdlib>
@@ -48,12 +49,26 @@ void Game::runGame()
 	game = true; 
 	int round = 0;
 
+	Queue q; 
 
-
-	for(int i = 0; i < teamOneNumPlayers; i++)
+	for(int i = 1; i <= teamOneNumPlayers; i++)
 	{
-		
+		std::cout << "\nWho would you like to choose for player number " << teamOneNumPlayers << std::endl; 
+		int t1 = teamOneMenu();
+		if (t1 == 1)
+		{
+			Character *v1 = new Vampire(); 
+
+			v1->setName(); 
+			q.addNodeTail(v1); 
+		}
+
 	}
+
+
+	std::cin.clear();
+	std::cin.sync();
+	std::cin.ignore();
 
 	while (game)
 	{

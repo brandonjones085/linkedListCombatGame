@@ -18,7 +18,7 @@ private:
 public:
 	Queue(); 
 	void addNodeHead(node*);
-	void addNodeTail(node*);
+	void addNodeTail(Character*);
 	void delNodeHead();
 	void delNodeTail();
 	void printNodes();

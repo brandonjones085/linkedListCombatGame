@@ -4,6 +4,9 @@
 ** Description:  The Character class is the base class for all the characters.
 *******************************************************************************/
 
+#include <iostream>
+#include <string>
+
 #include "Character.h"
 
 
@@ -59,8 +62,12 @@ void Character::setTotalDefense(int t)
 }
 
 
-void Character::setName(std::string n)
+void Character::setName()
 {
+	std::string n = " "; 
+	std::cout << "\nWhat would you like their name to be? "; 
+	std::cin.ignore(); 
+	std::getline(std::cin, n); 
 	this->name = n; 
 }
 

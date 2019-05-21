@@ -20,7 +20,8 @@ int menu()
 
 	int num1;
 
-	std::cout << "\n\nFirst you need to choose the attacker\n\n" << std::endl;
+	std::cout << "\n\nWelcom to the combat fantasy game\n\n" << std::endl;
+	std::cout << "What would you like to do?\n" << std::endl;
 	std::cout << "1. Play\n";
 	std::cout << "2. Exit\n";
 	

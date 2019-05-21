@@ -10,11 +10,25 @@ Queue::Queue()
 }
 
 
-void Queue::addNodeTail(node *n)
+void Queue::addNodeTail(Character *n)
 {
 	if (head == NULL)
 	{
+		head = new node(n); 
+		setNodeHead(head); 
+		setNodeTail(head); 
+	}
+	else
+	{
+		node *ptr = head; 
+		while (ptr->next != NULL)
+		{
+			ptr = ptr->next; 
+		}
 
+		ptr->next = new node(n); 
+
+		setNodeTail(ptr->next); 
 	}
 }
 
@@ -22,4 +36,9 @@ void Queue::addNodeTail(node *n)
 void Queue::setNodeHead(node *n)
 {
 	this->head = n;
+}
+
+void Queue::setNodeTail(node *n)
+{
+	this->tail = n; 
 }
