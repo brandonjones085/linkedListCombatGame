@@ -105,7 +105,7 @@ void HarryPotter::makeDefense(int attack)
 			else
 			{
 				int total = getStregthPoints() - damageTotal1;
-				std::cout << "Opponent strength (" << getStregthPoints() << ") -" << " Damage Total (" << damageTotal1 << ") " << "= Total damage (" << total << ") " << std::endl;
+				
 				setStregthPoints(total);
 
 
@@ -117,7 +117,7 @@ void HarryPotter::makeDefense(int attack)
 
 					std::cout << "\n\n\nHarry Potter used Hoggwarts\n\n";
 					int total = getStregthPoints() - damageTotal1;
-					std::cout << "Opponent strength (" << getStregthPoints() << ") -" << " Damage Total (" << damageTotal1 << ") " << "= Total damage (" << total << ") " << std::endl;
+					
 				}
 
 				else

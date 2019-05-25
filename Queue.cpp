@@ -124,3 +124,29 @@ Character *Queue::getFirst()
 {
 	return head->getPlayer();
 }
+
+
+void Queue::deleteHead()
+{
+	
+	if (!isEmpty())
+	{
+		Node *n = getNodeHead();
+		Node *next = n->getNext(); 
+
+		if (next != n)
+		{
+			next->setPrev(n->getPrev());
+			Node *last = n->getPrev(); 
+			last->setNext(next);
+			head = next; 
+		}
+		else
+		{
+			head = NULL; 
+		}
+
+		delete n; 
+
+	}
+}

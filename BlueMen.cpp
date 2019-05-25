@@ -144,7 +144,7 @@ void blueMen::makeDefense(int attack)
 		else
 		{
 			int total = getStregthPoints() - damageTotal1;
-			std::cout << "Opponent strength (" << getStregthPoints() << ") -" << " Damage Total (" << getDamageTotal() << ") " << "= Total damage (" << total << ") - " << std::endl;
+			
 
 			setStregthPoints(total);
 		}

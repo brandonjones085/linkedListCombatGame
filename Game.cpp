@@ -55,14 +55,16 @@ void Game::runGame()
 	teamTwo = new Queue; 
 	losers = new Queue; 
 	Node *l = losers->addNodeTail(nullptr);
-
+	
+	
 
 
 	int t1 = 0;
 	for(int i = 1; i <= teamOneNumPlayers; i++)
 	{
-		//
 		Node *n1 = teamOne->addNodeTail(nullptr);
+		
+		
 		std::string name = " ";
 		std::cout << "\nWho would you like to choose for player number " << i << std::endl; 
 		t1 = teamOneMenu();
@@ -107,8 +109,9 @@ void Game::runGame()
 
 	for (int i = 1; i <= teamTwoNumPlayers; i++)
 	{
-		//Adds noes to end of queue
+		//Adds noeds to end of queue
 		Node *n2 = teamTwo->addNodeTail(nullptr);
+		
 		std::string name = " ";
 		
 		std::cout << "\nWho would you like to choose for player number " << i << std::endl;
@@ -157,59 +160,85 @@ void Game::runGame()
 	std::cout << std::endl; 
 	std::cout << "\nThe team one players are...\n";
 	teamTwo->printQueue(); 
+	game = true; 
 
 
+	//Begins the game while there are nodes in the queue
+	
+	
+		
+	do {
 
-	//Begins the game
-	while (game)
-	{
+
 		//Pauses game between rounds
 		std::cin.clear();
-		std::cin.sync(); 
-		std::cin.ignore(); 
-		
+		std::cin.sync();
+		std::cin.ignore();
+		std::cout << teamOne->getFirst()->getName() << " versus " << teamTwo->getFirst()->getName() << std::endl;
 
-		
-		std::cout << "\nThe tournament has begun\n"; 
+		std::cout << "\nThe tournament has begun\n";
+
+
+
+		teamOne->getFirst()->makeAttack();
+
+		int aAttack = teamOne->getFirst()->getTotalAttack();
+
+		teamTwo->getFirst()->makeDefense(aAttack);
+
+		//Shows all the totals
+		std::cout << "\nAttacker strength " << teamOne->getFirst()->getStregthPoints() << std::endl;
+		std::cout << "Attacker armor " << teamOne->getFirst()->getArmor() << std::endl;
+		std::cout << "\nOpponent strength " << teamTwo->getFirst()->getStregthPoints() << std::endl;
+		std::cout << "Opponent armor " << teamTwo->getFirst()->getArmor() << std::endl;
+
+
 		std::cout << "\n\nRound number: " << round << std::endl;
 
-
-		std::cout << teamOne->getFirst()->getName() << " versus " << teamTwo->getFirst()->getName() << std::endl; 
-	
-		teamOne->getFirst()->makeAttack(); 
-
-		 int aAttack = teamOne->getFirst()->getTotalAttack(); 
-
-		 teamTwo->getFirst()->makeDefense(aAttack);
-
-		 
-
-
-		 //Shows all the totals
-		 std::cout << "\nAttacker strength " << teamOne->getFirst()->getStregthPoints() << std::endl;
-		 std::cout << "Attacker armor " << teamOne->getFirst()->getArmor() << std::endl;
-		 std::cout << "\nOpponent strength " << teamTwo->getFirst()->getStregthPoints() << std::endl;
-		 std::cout << "Opponent armor " << teamTwo->getFirst()->getArmor() << std::endl;
-
-
-		std::cout << "\n\nRound number: " << round << std::endl; 
-
 		//increments round by one
-		round++; 
+		round++;
 
 
-		int oStrength = teamTwo->getFirst()->getStregthPoints(); 
-
-
-		
+		int oStrength = teamTwo->getFirst()->getStregthPoints();
 
 		if (oStrength < 1)
 		{
-			game = false; 
-			std::cout << teamTwo->getFirst()->getName() << " lost\n"; 
-			l->setPlayer(teamTwo->getFirst()); 
 
-			std::cout << "The round is over!\n"; 
+			std::cout << teamTwo->getFirst()->getName() << " lost\n";
+
+
+			l->setPlayer(teamTwo->getFirst());//Adds to loser queue
+
+
+			std::cout << "The round is over!\n";
+
+			teamOne->deleteHead();
+			teamTwo->deleteHead();
+
+			if (teamOne->isEmpty())
+			{
+				std::cout << "\nTeam one is out of players\n";
+				game = false;
+			}
+			else if (teamTwo->isEmpty())
+			{
+				std::cout << "\nTeam two is out of players\n";
+				game = false;
+			}
+			else
+			{
+				std::cout << ".........................................................................\n";
+				std::cout << ".........................................................................\n";
+				std::cout << ".........................................................................\n";
+				std::cout << ".........................................................................\n";
+				std::cout << ".........................................................................\n";
+				std::cout << ".........................................................................\n";
+				std::cout << ".........................................................................\n";
+				std::cout << "\nThe next tournament is...\n";
+				round = 1;
+			}
+
+
 		}
 
 
@@ -223,10 +252,10 @@ void Game::runGame()
 		std::cout << "Round number " << round << std::endl;
 
 
-		teamTwo->getFirst()->makeAttack(); 
+		teamTwo->getFirst()->makeAttack();
 
 
-		int oAttack = teamTwo->getFirst()->getTotalAttack(); 
+		int oAttack = teamTwo->getFirst()->getTotalAttack();
 
 		teamOne->getFirst()->makeDefense(oAttack);
 
@@ -237,23 +266,59 @@ void Game::runGame()
 		std::cout << "Attacker armor " << teamOne->getFirst()->getArmor() << std::endl;
 		std::cout << "\nOpponent strength " << teamTwo->getFirst()->getStregthPoints() << std::endl;
 		std::cout << "Opponent armor " << teamTwo->getFirst()->getArmor() << std::endl;
-
-		int aStrength = teamOne->getFirst()->getStregthPoints(); 
+		round++;
+		int aStrength = teamOne->getFirst()->getStregthPoints();
 
 		if (aStrength < 1)
 		{
-			game = false;
+
 			std::cout << teamOne->getFirst()->getName() << " lost\n";
-			losers->addNodeTail(teamTwo->getFirst());
 
 			std::cout << "The round is over!\n";
-			l->setPlayer(teamOne->getFirst());
-		}
 
 
 
-		round++; 
-	}
+			l->setPlayer(teamOne->getFirst());//Adds to loser queue
+
+
+
+			teamOne->deleteHead();
+			teamTwo->deleteHead();
+
+
+				if (teamOne->isEmpty())
+				{
+					std::cout << "\nTeam one is out of players\n";
+					game = false;
+				}
+				else if (teamTwo->isEmpty())
+				{
+					std::cout << "\nTeam two is out of players\n";
+					game = false;
+				}
+				else
+				{
+					std::cout << ".........................................................................\n"; 
+					std::cout << ".........................................................................\n";
+					std::cout << ".........................................................................\n";
+					std::cout << ".........................................................................\n";
+					std::cout << ".........................................................................\n";
+					std::cout << ".........................................................................\n";
+					std::cout << ".........................................................................\n";
+
+					std::cout << "\nThe next tournament is...\n";
+					round = 1; 
+				}
+
+
+			}
+
+
+		}while (game);
+
+
+		
+	
 
 
 	char y = 'y'; 

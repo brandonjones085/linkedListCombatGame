@@ -34,6 +34,7 @@ public:
 	int getNodeTail();
 	void setNodeHead(Node*);
 	bool isEmpty(); 
+	void deleteHead(); 
 
 	Character *getFirst(); 
 
