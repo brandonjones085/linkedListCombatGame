@@ -23,7 +23,9 @@ int teamOneMenu()
 	std::cout << "Press 5 for Harry Potter\n";
 
 	std::cin >> num1;
-	validateMenu(num1);
+	
+
+	
 	return num1;
 
 

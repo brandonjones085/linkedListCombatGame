@@ -20,6 +20,11 @@ Medusa::Medusa()
 }
 
 
+Medusa::Medusa(std::string n)
+{
+	this->name = n; 
+}
+
 /*******************************************************************************
 ** Description: This is a virtual funciton inherited from the Character class.
 ** It is used when making an attack on the opponent.

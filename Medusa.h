@@ -7,6 +7,8 @@
 
 #include "Character.h"
 
+#include <string>
+
 
 #ifndef MEDUSA_HPP
 #define MEDUSA_HPP
@@ -15,6 +17,7 @@ class Medusa : public Character
 {
 public:
 	Medusa();
+	Medusa(std::string); 
 	virtual void makeAttack();
 	virtual void makeDefense(int);
 

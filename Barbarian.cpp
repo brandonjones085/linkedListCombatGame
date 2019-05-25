@@ -19,6 +19,12 @@ Barbarian::Barbarian()
 	this->strengthPoints = 12;
 }
 
+Barbarian::Barbarian(std::string n)
+{
+	this->name = n;
+}
+
+
 Barbarian::Barbarian(int a, int s)
 {
 	srand(time(NULL));

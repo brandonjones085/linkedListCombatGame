@@ -7,6 +7,8 @@
 
 
 #include "Queue.h"
+
+
 #include <iostream>
 
 Queue::Queue()
@@ -19,37 +21,106 @@ Queue::Queue()
 /*******************************************************************************
 ** Description:  Takes a Character object and adss it to the linked list
 *******************************************************************************/
-
-void Queue::addNodeTail(Character *n)
+Node *Queue::addNodeTail(Character *n)
 {
+	Node *temp = new Node(n); 
+
 	if (head == NULL)
 	{
-		head = new node(n); 
-		setNodeHead(head); 
-		setNodeTail(head); 
+		 
+		setNodeHead(temp); 
+		
 	}
 	else
 	{
-		node *ptr = head; 
-		while (ptr->next != NULL)
-		{
-			ptr = ptr->next; 
-		}
+		ptr = getNodeHead(); 
 
-		ptr->next = new node(n); 
+		temp->setNext(ptr); 
 
-		setNodeTail(ptr->next); 
+
+		Node *oTail = ptr->getPrev(); 
+
+		temp->setPrev(oTail);
+
+		oTail->setNext(temp);
+
+		ptr->setPrev(temp);
+
+		
 	}
+
+
+	return temp; 
 }
 
 //sets the head of the linked list
-void Queue::setNodeHead(node *n)
+void Queue::setNodeHead(Node *n)
 {
-	this->head = n;
+	if (n != nullptr)
+	{
+		if (isEmpty())
+		{
+			n->setPrev(n); 
+			n->setNext(n); 
+			
+		}
+		else
+		{
+			n->setNext(head); 
+			n->setPrev(head->getPrev()); 
+			head->setPrev(n); 
+		}
+	}
+
+	head = n; 
 }
 
 //sets the tail for the linked list
-void Queue::setNodeTail(node *n)
+void Queue::setNodeTail(Node *n)
 {
 	this->tail = n; 
+}
+
+
+Node *Queue::getNodeHead()
+{
+	return head; 
+}
+
+
+bool Queue::isEmpty()
+{
+	return getNodeHead() == NULL; 
+}
+
+
+
+
+/*******************************************************************************
+** Description:  Prints the queue
+*******************************************************************************/
+void Queue::printQueue()
+{
+	if (head == nullptr)
+	{
+		std::cout << "\nThe queue is empty\n"; 
+	}
+	else
+	{
+		Node *ptr = getNodeHead(); 
+
+		do 
+		{
+			std::cout << ptr->getPlayer()->getName() << std::endl; 
+
+			ptr = ptr->getNext(); 
+		} while (ptr != getNodeHead()); 
+
+	}
+}
+
+
+Character *Queue::getFirst()
+{
+	return head->getPlayer();
 }

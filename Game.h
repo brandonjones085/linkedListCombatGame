@@ -15,6 +15,7 @@ class Game
 private:
 	Queue *teamOne;
 	Queue *teamTwo;
+	Queue *losers; 
  
 	int numTeamOne; 
 	int numTeamTwo; 

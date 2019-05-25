@@ -27,7 +27,7 @@ public:
 	Character();
 	Character(int, int);
 	int getArmor();
-	void setName();
+	void setName(std::string);
 	std::string getName(); 
 
 

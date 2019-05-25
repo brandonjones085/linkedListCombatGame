@@ -8,6 +8,8 @@
 
 #include "Character.h"
 
+#include <string>
+
 #ifndef VAMPIRE_HPP
 #define VAMPIRE_HPP
 
@@ -16,7 +18,7 @@ class Vampire : public Character
 {
 public:
 	Vampire();
-
+	Vampire(std::string); 
 	virtual void makeAttack();
 	virtual void makeDefense(int);
 

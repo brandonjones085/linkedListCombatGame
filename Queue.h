@@ -1,3 +1,9 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         05/20/2019
+** Description:  The header file for the Queue class
+*******************************************************************************/
+
 
 
 #ifndef QUEUE_HPP
@@ -11,22 +17,28 @@
 class Queue : public Node
 {
 private: 
-	node *head = NULL; 
-	node *tail = NULL; 
-	node *n = NULL; 
+	Node *head = NULL; 
+	Node *tail = NULL; 
+	Node *ptr = NULL; 
+
 
 public:
 	Queue(); 
-	void addNodeHead(node*);
-	void addNodeTail(Character*);
+	void addNodeHead(Node*);
+	Node *addNodeTail(Character*);
 	void delNodeHead();
 	void delNodeTail();
-	void printNodes();
+	void printQueue();
 	void printNodesRev();
-	void setNodeTail(node*);
+	void setNodeTail(Node*);
 	int getNodeTail();
-	void setNodeHead(node*);
-	int getNodeHead();
+	void setNodeHead(Node*);
+	bool isEmpty(); 
+
+	Character *getFirst(); 
+
+
+	Node *getNodeHead();
 
 
 

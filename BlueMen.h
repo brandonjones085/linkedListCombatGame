@@ -6,6 +6,8 @@
 
 #include "Character.h"
 
+#include <string>
+
 #ifndef BLUEMEN_HPP
 #define BLUEMEN_HPP
 
@@ -16,6 +18,7 @@ class blueMen : public Character
 
 public:
 	blueMen();
+	blueMen(std::string); 
 	virtual void makeAttack();
 	virtual void makeDefense(int);
 	virtual int getTotalAttack();
