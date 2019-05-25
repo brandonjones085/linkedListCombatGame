@@ -5,7 +5,6 @@
 *******************************************************************************/
 
 
-
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
@@ -24,14 +23,13 @@ private:
 
 public:
 	Queue(); 
-	void addNodeHead(Node*);
+	
 	Node *addNodeTail(Character*);
-	void delNodeHead();
-	void delNodeTail();
+	
 	void printQueue();
-	void printNodesRev();
+	
 	void setNodeTail(Node*);
-	int getNodeTail();
+	
 	void setNodeHead(Node*);
 	bool isEmpty(); 
 	void deleteHead(); 

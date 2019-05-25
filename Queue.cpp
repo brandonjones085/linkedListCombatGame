@@ -87,7 +87,7 @@ Node *Queue::getNodeHead()
 	return head; 
 }
 
-
+//determines if the queue is empty
 bool Queue::isEmpty()
 {
 	return getNodeHead() == NULL; 
@@ -125,17 +125,24 @@ Character *Queue::getFirst()
 	return head->getPlayer();
 }
 
-
+/*******************************************************************************
+** Description:  Removes the head from the queue and 
+*******************************************************************************/
 void Queue::deleteHead()
 {
-	
+	//checks if empty
 	if (!isEmpty())
 	{
+		//gets the current head
 		Node *n = getNodeHead();
+
+		//gets the next node
 		Node *next = n->getNext(); 
 
+		//Checks if there is only one node
 		if (next != n)
 		{
+			//next gets set as the new head
 			next->setPrev(n->getPrev());
 			Node *last = n->getPrev(); 
 			last->setNext(next);
@@ -143,6 +150,7 @@ void Queue::deleteHead()
 		}
 		else
 		{
+			//sets the head to null
 			head = NULL; 
 		}
 

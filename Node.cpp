@@ -1,3 +1,10 @@
+/*******************************************************************************
+** Author:       Brandon Jones
+** Date:         05/20/2019
+** Description:  The Node the class is the main container for the characters. 
+*******************************************************************************/
+
+
 
 #include "Node.h"
 

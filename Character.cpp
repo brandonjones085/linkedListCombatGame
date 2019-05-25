@@ -80,6 +80,19 @@ int Character::getTotalAttack()
 	return totalAttack;
 }
 
+/*******************************************************************************
+
+** Description:  This recovers the character after they win a fight
+*******************************************************************************/
+
+void Character::recovery()
+{
+	int roll = std::rand() % 9 + 1;
+	setStregthPoints(roll); 
+	
+}
+
+
 void Character::makeAttack() {  }
 void Character::makeDefense(int i) {  }
 

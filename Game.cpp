@@ -36,21 +36,25 @@ Game::Game()
 
 void Game::runGame()
 {
+	int teamOnePoints = 0; 
 	int teamOneNumPlayers;
 	std::cout << "\nPlease enter the number of players for team one ";
 	std::cin >> teamOneNumPlayers;
 	validateInt(teamOneNumPlayers); 
 	setNumTeamOne(teamOneNumPlayers); 
 
+	int teamTwoPoints = 0; 
 	int teamTwoNumPlayers;
 	std::cout << "\nPlease enter the number of players for team two ";
 	std::cin >> teamTwoNumPlayers;
 	validateInt(teamTwoNumPlayers); 
 	setNumTeamTwo(teamTwoNumPlayers); 
 
+
 	game = true; 
 	int round = 1;
 
+	//Queue for both players and the loser
 	teamOne = new Queue;
 	teamTwo = new Queue; 
 	losers = new Queue; 
@@ -60,6 +64,8 @@ void Game::runGame()
 
 
 	int t1 = 0;
+
+	//Loops through number of players and sets players, then asks for their name
 	for(int i = 1; i <= teamOneNumPlayers; i++)
 	{
 		Node *n1 = teamOne->addNodeTail(nullptr);
@@ -107,6 +113,7 @@ void Game::runGame()
 
 	std::cout << "\n\nNow for team two..." << std::endl; 
 
+	//Loops through number of players and sets players, then asks for their name
 	for (int i = 1; i <= teamTwoNumPlayers; i++)
 	{
 		//Adds noeds to end of queue
@@ -148,13 +155,15 @@ void Game::runGame()
 		std::cin.ignore();
 		std::getline(std::cin, name);
 
-		n2->getPlayer()->setName(name);
+		n2->getPlayer()->setName(name);//Sets the name
 
 
 	}
 
 	std::cout << std::endl; 
 
+
+	//Displays the names for both the teams
 	std::cout << "\nThe team one players are...\n"; 
 	teamOne->printQueue(); 
 	std::cout << std::endl; 
@@ -164,9 +173,7 @@ void Game::runGame()
 
 
 	//Begins the game while there are nodes in the queue
-	
-	
-		
+
 	do {
 
 
@@ -174,12 +181,14 @@ void Game::runGame()
 		std::cin.clear();
 		std::cin.sync();
 		std::cin.ignore();
+
+		//Displays both the players for that tournament
 		std::cout << teamOne->getFirst()->getName() << " versus " << teamTwo->getFirst()->getName() << std::endl;
 
 		std::cout << "\nThe tournament has begun\n";
 
 
-
+		//Makes the attack
 		teamOne->getFirst()->makeAttack();
 
 		int aAttack = teamOne->getFirst()->getTotalAttack();
@@ -201,25 +210,40 @@ void Game::runGame()
 
 		int oStrength = teamTwo->getFirst()->getStregthPoints();
 
+		//If the strength drops below 1
 		if (oStrength < 1)
 		{
-
+			//Player that lost
 			std::cout << teamTwo->getFirst()->getName() << " lost\n";
-
+			teamOnePoints += 1; 
 
 			l->setPlayer(teamTwo->getFirst());//Adds to loser queue
 
 
-			std::cout << "The round is over!\n";
+			teamOne->getFirst()->recovery(); //recovers the player that won
 
+
+			std::cout << "The round is over!\n";
+			std::cout << "\nTeam one points: " << teamOnePoints; 
+			std::cout << "\nTeam two points: " << teamTwoPoints;
+
+			
+
+			teamOne->setNodeTail(teamOne->getNext()); //Sets the winner to the back of the queue
+
+			//Removes the player from the head
 			teamOne->deleteHead();
 			teamTwo->deleteHead();
 
+
+			//If the teamOne returns true for being empty
 			if (teamOne->isEmpty())
 			{
 				std::cout << "\nTeam one is out of players\n";
 				game = false;
 			}
+
+			//If the teamTwo returns true for being empty
 			else if (teamTwo->isEmpty())
 			{
 				std::cout << "\nTeam two is out of players\n";
@@ -227,7 +251,7 @@ void Game::runGame()
 			}
 			else
 			{
-				std::cout << ".........................................................................\n";
+				std::cout << "\n.........................................................................\n";
 				std::cout << ".........................................................................\n";
 				std::cout << ".........................................................................\n";
 				std::cout << ".........................................................................\n";
@@ -235,6 +259,7 @@ void Game::runGame()
 				std::cout << ".........................................................................\n";
 				std::cout << ".........................................................................\n";
 				std::cout << "\nThe next tournament is...\n";
+				
 				round = 1;
 			}
 
@@ -246,12 +271,13 @@ void Game::runGame()
 		std::cout << "\n\nPlease enter for the opponent to attack now\n" << std::endl;
 
 		std::cout << "-------------------------------------------------------------------" << std::endl;
+		std::cout << teamOne->getFirst()->getName() << " versus " << teamTwo->getFirst()->getName() << std::endl;
 		std::cin.clear();
 		std::cin.sync();
 		std::cin.ignore();
 		std::cout << "Round number " << round << std::endl;
 
-
+		//teamTwo attacks
 		teamTwo->getFirst()->makeAttack();
 
 
@@ -267,25 +293,33 @@ void Game::runGame()
 		std::cout << "\nOpponent strength " << teamTwo->getFirst()->getStregthPoints() << std::endl;
 		std::cout << "Opponent armor " << teamTwo->getFirst()->getArmor() << std::endl;
 		round++;
+
 		int aStrength = teamOne->getFirst()->getStregthPoints();
 
+		//If the strength drops below 1
 		if (aStrength < 1)
 		{
-
+			//The name of player which lost
 			std::cout << teamOne->getFirst()->getName() << " lost\n";
 
+			teamTwoPoints += 1; //adds a point to the winner
+			
 			std::cout << "The round is over!\n";
-
-
+			std::cout << "\nTeam one points: " << teamOnePoints;
+			std::cout << "\nTeam two points: " << teamTwoPoints;
 
 			l->setPlayer(teamOne->getFirst());//Adds to loser queue
 
 
+			teamTwo->getFirst()->recovery(); //recovers the player that won
 
+			teamTwo->setNodeTail(teamTwo->getNext()); //Sets the winner to the back of the queue
+
+			//Removes the head
 			teamOne->deleteHead();
 			teamTwo->deleteHead();
 
-
+				//
 				if (teamOne->isEmpty())
 				{
 					std::cout << "\nTeam one is out of players\n";
@@ -307,6 +341,7 @@ void Game::runGame()
 					std::cout << ".........................................................................\n";
 
 					std::cout << "\nThe next tournament is...\n";
+					std::cout << teamOne->getPlayer()->getName() << " versus " << teamTwo->getPlayer()->getName() << std::endl; 
 					round = 1; 
 				}
 
@@ -320,19 +355,46 @@ void Game::runGame()
 		
 	
 
-
+		//Asks user if they would like to display the loser queue
 	char y = 'y'; 
 	std::cout << "\nWould you like to display the contents of the loser container? y\n "; 
 	std::cin >> y; 
 
 	if (putchar(tolower(y)) == 'y')
 	{
+		char again = 'y'; 
 		//Display loser content
 
 		std::cout << "\n\nThe losers are: " << std::endl; 
 		
 		losers->printQueue();
 
+
+		std::cout << "\nWould you like to play again? y/n"; 
+		std::cin >> again; 
+
+		if (putchar(tolower(again)) == 'y')
+		{
+			game = true; 
+			runGame(); 
+		}
+		else
+		{
+			game = false; 
+			std::cout << "\nGoodbye\n"; 
+			exit(0); 
+		}
+
+
+
+
+
+
+	}
+	else
+	{
+		std::cout << "\nGoodbye!"; 
+		exit(0); 
 	}
 
 

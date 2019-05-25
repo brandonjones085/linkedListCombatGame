@@ -29,6 +29,7 @@ public:
 	int getArmor();
 	void setName(std::string);
 	std::string getName(); 
+	void recovery(); 
 
 
 	virtual int getDefensePoints();
